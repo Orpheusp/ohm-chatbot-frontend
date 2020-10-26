@@ -43,6 +43,7 @@ module.exports = mergeConfig(commonConfig, {
     // Tells the server where the bundled code actually is.
     publicPath: 'http://localhost:3000/',
     watchContentBase: true,
+    open: 'Google Chrome',
   },
   devtool: 'inline-source-map',
   plugins: [new webpack.WatchIgnorePlugin([/css\.d\.ts$/])],

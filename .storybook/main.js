@@ -1,6 +1,5 @@
 const devConfig = require('../webpack.config.dev');
 const prodConfig = require('../webpack.config.prod');
-const { TypedCssModulesPlugin } = require('typed-css-modules-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -14,11 +13,6 @@ module.exports = {
       ...config.resolve.alias,
       ...devConfig.resolve.alias,
     };
-    config.plugins.push(
-      new TypedCssModulesPlugin({
-        globPattern: 'src/**/*.module.css',
-      })
-    );
 
     if ((configType = 'DEVELOPMENT')) {
       config.devtool = devConfig.devtool;
@@ -28,4 +22,5 @@ module.exports = {
 
     return config;
   },
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
 };

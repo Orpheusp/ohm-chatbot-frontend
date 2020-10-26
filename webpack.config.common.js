@@ -5,7 +5,7 @@
 // Disabling this lint rule since `__dirname` is a global variable in Node.js,
 // but it is not recognized by the linter.
 const path = require('path');
-const merge = require('webpack-merge');
+const { mergeWithCustomize, customizeObject } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -31,7 +31,10 @@ const commonConfig = {
       {
         // Transforming TSX
         test: /\.(ts|tsx)$/,
-        loader: ['ts-loader', 'react-docgen-typescript-loader'],
+        use: [
+          { loader: 'ts-loader' },
+          { loader: 'react-docgen-typescript-loader' },
+        ],
       },
       {
         // Images
@@ -69,9 +72,11 @@ const commonConfig = {
   ],
 };
 
-const mergeConfig = merge.strategy({
-  plugins: 'append',
-  'module.rules': 'append',
+const mergeConfig = mergeWithCustomize({
+  customizeObject: customizeObject({
+    plugins: 'append',
+    'module.rules': 'append',
+  }),
 });
 
 module.exports.commonConfig = commonConfig;
