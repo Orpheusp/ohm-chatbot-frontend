@@ -1,0 +1,30 @@
+.card-base {
+  border-radius: 0.25rem;
+  font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+
+  &--small {
+    width: 16rem;
+  }
+
+  &--medium {
+    width: 21rem;
+  }
+
+  &--large {
+    width: 30rem;
+  }
+
+  &--red {
+    background-color: #c41e3a;
+    color: #ffffff;
+  }
+
+  &--white {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    color: #222222;
+  }
+}
