@@ -4,8 +4,6 @@
 /* eslint-disable no-undef */
 // Disabling this lint rule since `__dirname` is a global variable in Node.js,
 // but it is not recognized by the linter.
-const path = require('path');
-const webpack = require('webpack');
 const { commonConfig, mergeConfig } = require('./webpack.config.common.js');
 
 module.exports = mergeConfig(commonConfig, {
@@ -15,19 +13,19 @@ module.exports = mergeConfig(commonConfig, {
   module: {
     rules: [
       {
-        // For processing CSS.
-        test: /\.css$/,
-        include: path.join(__dirname, 'src/'),
+        test: /\.s[ac]ss$/i,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              localIdentName: '[path][name]__[local]',
-              localsConvention: 'camelCase',
               sourceMap: true,
-              esModule: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
             },
           },
         ],
@@ -46,5 +44,4 @@ module.exports = mergeConfig(commonConfig, {
     open: 'Google Chrome',
   },
   devtool: 'inline-source-map',
-  plugins: [new webpack.WatchIgnorePlugin([/css\.d\.ts$/])],
 });
