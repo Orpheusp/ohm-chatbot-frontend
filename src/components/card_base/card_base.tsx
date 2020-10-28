@@ -17,6 +17,7 @@ export interface CardBaseProps {
   size: CardBaseSize;
   style: CardBaseStyle;
   children: React.ReactNode;
+  className?: string;
 }
 
 /** Cart Base component */
@@ -24,6 +25,9 @@ export function CardBase({
   size,
   style,
   children,
+  className,
 }: CardBaseProps): JSX.Element {
-  return <div className={`card-base ${size} ${style}`}>{children}</div>;
+  return (
+    <div className={`card-base ${size} ${style} ${className}`}>{children}</div>
+  );
 }
