@@ -71,6 +71,16 @@ body {
   margin-top: 0.5rem;
 }
 
+@mixin card-subtitle {
+  @include medium-ft;
+
+  color: $accent-red;
+  font-size: 0.75rem;
+  letter-spacing: 0.125rem;
+  line-height: 0.75rem;
+  margin-top: 0.25rem;
+}
+
 @mixin card-content {
   @include regular-ft;
 

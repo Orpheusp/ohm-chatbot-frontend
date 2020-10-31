@@ -1,0 +1,62 @@
+@import 'src/base.scss';
+
+.tutorial-card {
+  &__type {
+    @include card-type-label;
+  }
+
+  &__tutorial-name {
+    @include card-subtitle;
+  }
+
+  &__step-name {
+    @include card-title;
+  }
+
+  &__step-detail {
+    @include card-content;
+  }
+
+  &__progress {
+    margin-top: 0.5rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    justify-content: flex-end;
+  }
+}
+
+.button {
+  @include medium-ft;
+
+  border-radius: 0.25rem;
+  color: $accent-red;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 0.125rem;
+  padding: 0.5rem 0.75rem;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: $accent-red;
+    color: $background-white;
+    transition: all linear 0.15s;
+  }
+}
+
+.tutorial-progress-dot--done,
+.tutorial-progress-dot--undone {
+  border: 1px solid $accent-red;
+  border-radius: 50%;
+  display: inline-block;
+  height: 0.625rem;
+  margin-right: 0.25rem;
+  width: 0.625rem;
+}
+
+.tutorial-progress-dot--done {
+  background-color: $accent-red;
+}
