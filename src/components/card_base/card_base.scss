@@ -6,15 +6,15 @@
   padding: 1rem;
 
   &--small {
-    width: 16rem;
+    width: $card-width-small;
   }
 
   &--medium {
-    width: 21rem;
+    width: $card-width-medium;
   }
 
   &--large {
-    width: 30rem;
+    width: $card-width-large;
   }
 
   &--red {
