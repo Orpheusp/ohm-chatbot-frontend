@@ -48,7 +48,9 @@ function InfoCardMetadataRow({
   const { type, label } = content;
   return (
     <div className={'info-card-metadata-row'}>
-      <div className={`info-card-metadata-row__icon icon-${icons[type]}`} />
+      <div className={`info-card-metadata-row__icon`}>
+        <div className={`icon-${icons[type]} icon`} />
+      </div>
       <div className={'info-card-metadata-row__label'}>{label}</div>
     </div>
   );

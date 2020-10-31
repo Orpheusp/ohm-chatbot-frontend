@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+@import './icons.scss';
 
 $accent-red: #c41e3a;
 $text-black: #222222;
@@ -14,20 +15,6 @@ $card-width-large: 30rem;
 body {
   /* stylelint-disable-next-line */
   font-size: 16px;
-}
-
-@mixin material-icons {
-  direction: ltr;
-  display: block;
-  font-family: 'Material Icons';
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-  font-style: normal;
-  font-weight: normal;
-  letter-spacing: normal;
-  text-transform: none;
-  white-space: nowrap;
-  word-wrap: normal;
 }
 
 @mixin base-ft {
@@ -63,4 +50,32 @@ body {
   @include regular-ft;
 
   text-decoration: line-through;
+}
+
+@mixin card-type-label {
+  @include regular-ft;
+
+  color: $accent-red;
+  font-size: 0.75rem;
+  letter-spacing: 0.125rem;
+  line-height: 0.75rem;
+  text-transform: uppercase;
+}
+
+@mixin card-title {
+  @include medium-ft;
+
+  color: $text-black;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+@mixin card-content {
+  @include regular-ft;
+
+  color: $text-grey;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  margin-top: 0.5rem;
 }

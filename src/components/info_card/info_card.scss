@@ -2,41 +2,26 @@
 
 .info-card {
   &__type {
-    @include regular-ft;
-
-    color: $accent-red;
-    font-size: 0.75rem;
-    letter-spacing: 0.125rem;
-    line-height: 0.75rem;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
+    @include card-type-label;
   }
 
   &__title {
-    @include medium-ft;
-
-    color: $text-black;
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    margin-bottom: 0.5rem;
+    @include card-title;
   }
 
   &__content {
-    @include regular-ft;
+    @include card-content;
+  }
 
-    color: $text-grey;
-    font-size: 1rem;
-    line-height: 1.25rem;
-    margin-bottom: 1rem;
+  &__metadata-rows {
+    margin-top: 1rem;
   }
 }
 
 .info-card-metadata-row {
-  margin-bottom: 0.25rem;
+  margin-top: 0.25rem;
 
   &__icon {
-    @include material-icons;
-
     color: $accent-red;
     display: inline-block;
     font-size: 0.875rem;
@@ -56,29 +41,5 @@
     line-height: 0.875rem;
     max-width: $card-width-medium - 1rem;
     vertical-align: middle;
-  }
-}
-
-.icon-address {
-  &::before {
-    content: '\e55b';
-  }
-}
-
-.icon-email {
-  &::before {
-    content: '\e0e6';
-  }
-}
-
-.icon-url {
-  &::before {
-    content: '\e80b';
-  }
-}
-
-.icon-phone {
-  &::before {
-    content: '\e0b0';
   }
 }

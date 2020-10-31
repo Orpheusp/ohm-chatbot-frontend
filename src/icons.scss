@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+@mixin material-icons {
+  direction: ltr;
+  display: block;
+  font-family: 'Material Icons';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.icon {
+  @include material-icons;
+}
+
+.icon-address {
+  &::before {
+    content: '\e55b';
+  }
+}
+
+.icon-email {
+  &::before {
+    content: '\e0e6';
+  }
+}
+
+.icon-url {
+  &::before {
+    content: '\e80b';
+  }
+}
+
+.icon-phone {
+  &::before {
+    content: '\e0b0';
+  }
+}
