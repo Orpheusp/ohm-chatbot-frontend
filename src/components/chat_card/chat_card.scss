@@ -1,2 +1,7 @@
+@import 'src/base.scss';
+
 .chat-card {
+  @include regular-ft;
+
+  font-size: 1rem;
 }

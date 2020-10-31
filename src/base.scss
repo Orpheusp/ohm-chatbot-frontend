@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+$accent-red: #c41e3a;
+$text-black: #222222;
+$border-grey: #e5e5e5;
+$background-white: #ffffff;
+
+body {
+  /* stylelint-disable-next-line */
+  font-size: 16px;
+}
+
+@mixin material-icons {
+  direction: ltr;
+  display: block;
+  font-family: 'Material Icons';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+@mixin base-ft {
+  font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', Arial, Helvetica,
+    sans-serif;
+}
+
+@mixin regular-ft {
+  @include base-ft;
+
+  font-style: normal;
+}
+
+@mixin bold-ft {
+  @include regular-ft;
+
+  font-weight: bold;
+}
+
+@mixin italic-ft {
+  @include base-ft;
+
+  font-style: italic;
+}
+
+@mixin strike-through-ft {
+  @include regular-ft;
+
+  text-decoration: line-through;
+}

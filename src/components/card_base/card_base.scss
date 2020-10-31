@@ -1,7 +1,7 @@
+@import 'src/base.scss';
+
 .card-base {
   border-radius: 0.25rem;
-  font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 1rem;
   margin: 1rem;
   padding: 1rem;
 
@@ -18,13 +18,13 @@
   }
 
   &--red {
-    background-color: #c41e3a;
-    color: #ffffff;
+    background-color: $accent-red;
+    color: $background-white;
   }
 
   &--white {
-    background-color: #ffffff;
-    border: 1px solid #e5e5e5;
-    color: #222222;
+    background-color: $background-white;
+    border: 1px solid $border-grey;
+    color: $text-black;
   }
 }
