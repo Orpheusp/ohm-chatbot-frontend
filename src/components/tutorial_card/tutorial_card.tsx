@@ -6,6 +6,8 @@ import {
   CardBaseSize,
 } from 'src/components/card_base/card_base';
 
+import { TutorialButton } from 'src/components/tutorial_button/tutorial_button';
+
 import './tutorial_card.scss';
 
 export enum TutorialStepForwardConditionType {
@@ -40,7 +42,11 @@ function tutorialProgressBar(
   const dots: JSX.Element[] = [];
   for (let i = 0; i < tutorialLength; i++) {
     const classNameSuffix = i <= currentStepIndex ? 'done' : 'undone';
-    dots.push(<div className={`tutorial-progress-dot--${classNameSuffix}`} />);
+    dots.push(
+      <div
+        className={`tutorial-progress-dot tutorial-progress-dot--${classNameSuffix}`}
+      />
+    );
   }
   return dots;
 }
@@ -64,7 +70,7 @@ export function TutorialCard({ data }: TutorialCardProps): JSX.Element {
       <div className={'tutorial-card__step-name'}>{currentStep.title}</div>
       <div className={'tutorial-card__step-detail'}>{currentStep.content}</div>
       <div className={'tutorial-card__actions'}>
-        <div className={'button'}>next</div>
+        <TutorialButton label={'next'} isActive={true} />
       </div>
     </CardBase>
   );
