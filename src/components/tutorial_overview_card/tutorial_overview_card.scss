@@ -1,0 +1,32 @@
+@import 'src/base.scss';
+
+.tutorial-overview-card {
+  &__type {
+    @include card-type-label;
+  }
+
+  &__title {
+    @include card-title;
+  }
+
+  &__content {
+    @include card-content;
+  }
+
+  &__text,
+  &__guide {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__text {
+    max-width: $card-width-medium - 2.5rem;
+  }
+
+  &__guide {
+    color: $text-grey;
+    font-size: 2.5rem;
+    height: 1.5rem;
+    width: 2.5rem;
+  }
+}

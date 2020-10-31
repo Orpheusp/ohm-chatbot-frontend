@@ -41,3 +41,9 @@
     content: '\e0b0';
   }
 }
+
+.icon-right {
+  &::before {
+    content: '\e315';
+  }
+}
