@@ -9,8 +9,8 @@ import {
 import './chat_card.scss';
 
 export enum ChatCardSender {
-  USER,
-  BOT,
+  USER = 'user',
+  BOT = 'bot',
 }
 
 export interface ChatCardProps {
@@ -23,7 +23,11 @@ export function ChatCard({ message, from }: ChatCardProps): JSX.Element {
   const style =
     from == ChatCardSender.USER ? CardBaseStyle.RED : CardBaseStyle.WHITE;
   return (
-    <CardBase size={CardBaseSize.SMALL} style={style} className={'chat-card'}>
+    <CardBase
+      size={CardBaseSize.SMALL}
+      style={style}
+      className={`chat-card chat-card--${from}`}
+    >
       <div>{message}</div>
     </CardBase>
   );

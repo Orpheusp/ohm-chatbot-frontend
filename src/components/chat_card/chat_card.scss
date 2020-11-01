@@ -4,4 +4,12 @@
   @include regular-ft;
 
   font-size: 1rem;
+
+  &--user {
+    text-align: right;
+  }
+
+  &--bot {
+    text-align: left;
+  }
 }
