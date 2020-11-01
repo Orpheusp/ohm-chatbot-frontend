@@ -18,6 +18,7 @@ export interface CardBaseProps {
   style: CardBaseStyle;
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
 /** Cart Base component */
@@ -26,8 +27,15 @@ export function CardBase({
   style,
   children,
   className,
+  onClick,
 }: CardBaseProps): JSX.Element {
-  return (
-    <div className={`card-base ${size} ${style} ${className}`}>{children}</div>
-  );
+  const classNames = ['card-base', size, style];
+  if (onClick) {
+    classNames.push('card-base--clickable');
+  }
+  if (className) {
+    classNames.push(className);
+  }
+
+  return <div className={classNames.join(' ')}>{children}</div>;
 }

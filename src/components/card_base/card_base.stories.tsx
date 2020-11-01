@@ -35,3 +35,16 @@ export const large = (): JSX.Element => (
 large.story = {
   name: 'Large',
 };
+
+export const clickable = (): JSX.Element => (
+  <CardBase
+    size={CardBaseSize.LARGE}
+    style={CardBaseStyle.WHITE}
+    onClick={() => {}}
+  >
+    {displayElement}
+  </CardBase>
+);
+clickable.story = {
+  name: 'Clickable',
+};
