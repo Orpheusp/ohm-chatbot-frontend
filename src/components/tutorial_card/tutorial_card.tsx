@@ -1,37 +1,22 @@
 import React from 'react';
 
+import { TutorialCardData } from 'src/datatypes';
 import {
   CardBase,
   CardBaseStyle,
   CardBaseSize,
 } from 'src/components/card_base/card_base';
-
 import { TutorialButton } from 'src/components/tutorial_button/tutorial_button';
 
 import './tutorial_card.scss';
 
-export enum TutorialStepForwardConditionType {
-  URL_MATCH,
-}
-
-export interface TutorialStepForwardCondition {
-  conditionType: TutorialStepForwardConditionType;
-  detail: string;
-}
-
-export interface TutorialStepData {
-  title: string;
-  content: string;
-  forwardCondition: TutorialStepForwardCondition;
-}
-
-export interface TutorialCardData {
-  title: string;
-  steps: TutorialStepData[];
-}
-
 export interface TutorialCardProps {
   data: TutorialCardData;
+  completeTutorial: () => void;
+  continueTutorial: () => void;
+  cancelTutorial: () => void;
+  currentStep: number;
+  isForwardConditionMet: boolean;
 }
 
 /** Utility function for creating progress bar */
@@ -52,26 +37,69 @@ function tutorialProgressBar(
 }
 
 /** Tutorial Card component */
-export function TutorialCard({ data }: TutorialCardProps): JSX.Element {
-  const { title, steps } = data;
-  const currentStepIndex = 0;
-  const currentStep = steps[currentStepIndex];
+export function TutorialCard({
+  data,
+  completeTutorial,
+  continueTutorial,
+  cancelTutorial,
+  currentStep,
+  isForwardConditionMet,
+}: TutorialCardProps): JSX.Element {
+  const { title, resources: steps } = data;
+  const { resourceText: stepTitle, resource: stepContent } = steps[currentStep];
+
+  let actionButton: JSX.Element;
+
+  if (currentStep == steps.length - 1) {
+    actionButton = (
+      <TutorialButton
+        label={'complete'}
+        isActive={isForwardConditionMet}
+        onClick={isForwardConditionMet ? continueTutorial : undefined}
+      />
+    );
+  } else {
+    actionButton = (
+      <TutorialButton
+        label={'next'}
+        isActive={isForwardConditionMet}
+        onClick={isForwardConditionMet ? completeTutorial : undefined}
+      />
+    );
+  }
+
+  const closeButtonAction = () => {
+    if (currentStep == steps.length && isForwardConditionMet) {
+      completeTutorial();
+    } else {
+      cancelTutorial();
+    }
+  };
+
+  const completeStatusClassName = isForwardConditionMet
+    ? 'tutorial-card--step-complete'
+    : 'tutorial-card--step-pending';
+
   return (
     <CardBase
       size={CardBaseSize.LARGE}
       style={CardBaseStyle.WHITE}
       className={'tutorial-card'}
     >
+      <div
+        className='tutorial-card__close-button'
+        onClick={closeButtonAction}
+      />
       <div className={'tutorial-card__type'}>tutorial</div>
       <div className={'tutorial-card__tutorial-name'}>{title}</div>
       <div className={'tutorial-card__progress'}>
-        {tutorialProgressBar(currentStepIndex, steps.length)}
+        {tutorialProgressBar(currentStep, steps.length)}
       </div>
-      <div className={'tutorial-card__step-name'}>{currentStep.title}</div>
-      <div className={'tutorial-card__step-detail'}>{currentStep.content}</div>
-      <div className={'tutorial-card__actions'}>
-        <TutorialButton label={'next'} isActive={true} />
+      <div className={`tutorial-card__step-name ${completeStatusClassName}`}>
+        {stepTitle}
       </div>
+      <div className={'tutorial-card__step-detail'}>{stepContent}</div>
+      <div className={'tutorial-card__actions'}>{actionButton}</div>
     </CardBase>
   );
 }

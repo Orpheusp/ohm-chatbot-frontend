@@ -26,6 +26,7 @@ export enum ForwardConditionType {
 
 export interface TutorialCardResource {
   resource: string;
+  resourceText?: string;
   resourceType: CardResourceType;
   forwardCondition?: string;
   forwardConditionType?: ForwardConditionType;
