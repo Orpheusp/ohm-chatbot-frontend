@@ -17,6 +17,10 @@
     margin-top: 0.125rem;
   }
 
+  &__image {
+    max-width: $card-width-medium;
+  }
+
   &__icon {
     color: $accent-red;
     display: inline-block;

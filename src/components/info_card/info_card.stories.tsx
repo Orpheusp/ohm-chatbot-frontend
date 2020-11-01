@@ -34,7 +34,7 @@ urlInfoCard.story = {
   name: 'Info card with URL',
 };
 
-const urlInfoCardDataWithResourceText: InformationCardData = {
+const urlInfoCardDataWithMultipleResources: InformationCardData = {
   supportingText: 'Know all about maintaining your visa',
   resources: [
     {
@@ -56,9 +56,57 @@ const urlInfoCardDataWithResourceText: InformationCardData = {
   authRequired: false,
 };
 
-export const urlInfoCardWithResourceText = (): JSX.Element => (
-  <InfoCard data={urlInfoCardDataWithResourceText} />
+export const urlInfoCardWithMultipleResources = (): JSX.Element => (
+  <InfoCard data={urlInfoCardDataWithMultipleResources} />
 );
-urlInfoCardWithResourceText.story = {
+urlInfoCardWithMultipleResources.story = {
   name: 'Info card with multiple resources',
+};
+
+const imageInfoCardData: InformationCardData = {
+  supportingText: 'Carnegie Mellon University school mascot',
+  resources: [
+    {
+      resourceText: 'Meet Scottie, our school mascot!',
+      resource:
+        'https://www.cmu.edu/brand/brand-guidelines/images/scottycrop2-600x600.png',
+      resourceType: CardResourceType.IMG,
+    },
+  ],
+  resourceCode: 'I10',
+  department: 'university',
+  owner: 'UniversityAdmin',
+  authRequired: false,
+};
+
+export const imageInfoCard = (): JSX.Element => (
+  <InfoCard data={imageInfoCardData} />
+);
+imageInfoCard.story = {
+  name: 'Info card with image',
+};
+
+const textInfoCardData: InformationCardData = {
+  supportingText: "Carnegie Mellon University's Vision",
+  resources: [
+    {
+      resourceText: "The school's vision is:",
+      resource:
+        'Carnegie Mellon University will have a transformative impact on ' +
+        'society through continual innovation in education, research, ' +
+        'creativity, and entrepreneurship.',
+      resourceType: CardResourceType.TXT,
+    },
+  ],
+  resourceCode: 'I10',
+  department: 'university',
+  owner: 'UniversityAdmin',
+  authRequired: false,
+};
+
+export const textInfoCard = (): JSX.Element => (
+  <InfoCard data={textInfoCardData} />
+);
+textInfoCard.story = {
+  name: 'Info card with text',
 };

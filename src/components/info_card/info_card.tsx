@@ -22,7 +22,7 @@ export interface InfoCardProps {
   data: InformationCardData;
 }
 
-/** Chat Cart component */
+/** Info Card component */
 function InfoCardResource({ data }: InfoCardResourceProps): JSX.Element {
   const { resource, resourceType, resourceText } = data;
   let resourceContent: JSX.Element;
@@ -30,7 +30,11 @@ function InfoCardResource({ data }: InfoCardResourceProps): JSX.Element {
   if (resourceType == CardResourceType.IMG) {
     resourceContent = (
       <div className={'info-card-resource__resource'}>
-        <img />
+        <img
+          className={'info-card-resource__image'}
+          src={resource}
+          alt={resourceText}
+        />
       </div>
     );
   } else if (resourceType == CardResourceType.URL) {
