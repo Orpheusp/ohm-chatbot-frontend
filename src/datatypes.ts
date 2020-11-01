@@ -15,7 +15,7 @@ export interface InformationCardData {
   department: string;
   resources?: InformationCardResource[];
   owner: string;
-  supportingText?: string;
+  supportingText: string;
   authRequired: boolean;
 }
 
@@ -26,15 +26,16 @@ export enum ForwardConditionType {
 export interface TutorialCardResource {
   resource: string;
   resourceType: CardResourceType;
-  forwardCondition: string;
-  forwardConditionType: ForwardConditionType;
+  forwardCondition?: string;
+  forwardConditionType?: ForwardConditionType;
 }
 
 export interface TutorialCardData {
+  title: string;
   resourceCode: string;
   department: string;
-  resources?: TutorialCardResource[];
+  resources: TutorialCardResource[];
   owner: string;
-  supportingText?: string;
+  supportingText: string;
   authRequired: boolean;
 }

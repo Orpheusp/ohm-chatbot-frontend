@@ -1,24 +1,32 @@
 import React from 'react';
 
-import {
-  TutorialOverviewCard,
-  TutorialOverviewCardData,
-} from './tutorial_overview_card';
+import { TutorialOverviewCard } from './tutorial_overview_card';
+
+import { TutorialCardData } from 'src/datatypes';
 
 export default {
   title: 'Tutorial Overview Card',
   component: TutorialOverviewCard,
 };
 
-const cpdcAppointmentCardData: TutorialOverviewCardData = {
-  title: 'Book An Appointment with CPDC',
-  content:
-    'Follow these steps to book your first Career Services appointment! ',
+const oieCardData: TutorialCardData = {
+  title: 'Reach out to OIE using this quick tutorial!',
+  resourceCode: 'T01',
+  department: 'OIE',
+  resources: [],
+  owner: 'OieAdmin',
+  supportingText: 'To contact OiE, follow the simple steps below',
+  authRequired: false,
 };
 
-export const cpdcAppointmentCard = (): JSX.Element => (
-  <TutorialOverviewCard data={cpdcAppointmentCardData} />
+export const oieCard = (): JSX.Element => (
+  <TutorialOverviewCard
+    data={oieCardData}
+    enterTutorial={(data: TutorialCardData) => {
+      console.log(data);
+    }}
+  />
 );
-cpdcAppointmentCard.story = {
-  name: 'CPDC Appointment Tutorial Overview Card',
+oieCard.story = {
+  name: 'OIE Tutorial Overview Card',
 };
