@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { ChatCardSender, ChatCardData } from 'src/datatypes';
 import {
   CardBase,
   CardBaseStyle,
@@ -8,25 +9,24 @@ import {
 
 import './chat_card.scss';
 
-export enum ChatCardSender {
-  USER = 'user',
-  BOT = 'bot',
-}
-
 export interface ChatCardProps {
-  message: string;
-  from: ChatCardSender;
+  data: ChatCardData;
 }
 
 /** Chat Cart component */
-export function ChatCard({ message, from }: ChatCardProps): JSX.Element {
+export function ChatCard({ data }: ChatCardProps): JSX.Element {
+  const { message, sender } = data;
   const style =
-    from == ChatCardSender.USER ? CardBaseStyle.RED : CardBaseStyle.WHITE;
+    sender == ChatCardSender.USER ? CardBaseStyle.RED : CardBaseStyle.WHITE;
+  const classNames = [
+    'chat-card',
+    sender == ChatCardSender.USER ? 'chat-card--user' : 'chat-card--bot',
+  ];
   return (
     <CardBase
       size={CardBaseSize.SMALL}
       style={style}
-      className={`chat-card chat-card--${from}`}
+      className={classNames.join(' ')}
     >
       <div>{message}</div>
     </CardBase>
