@@ -34,7 +34,7 @@ export function TutorialOverviewCard({
         <div className={'tutorial-overview-card__content'}>{content}</div>
       </div>
       <div className={'tutorial-overview-card__guide'}>
-        <div className={'icon-right icon'} />
+        <div className={'icon-next icon'} />
       </div>
     </CardBase>
   );

@@ -67,8 +67,11 @@ body {
 
   color: $text-black;
   font-size: 1.5rem;
+  hyphens: auto;
   line-height: 1.5rem;
   margin-top: 0.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 @mixin card-subtitle {
@@ -76,9 +79,12 @@ body {
 
   color: $accent-red;
   font-size: 0.75rem;
+  hyphens: auto;
   letter-spacing: 0.125rem;
   line-height: 0.75rem;
   margin-top: 0.25rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 @mixin card-content {
@@ -86,6 +92,9 @@ body {
 
   color: $text-grey;
   font-size: 1rem;
+  hyphens: auto;
   line-height: 1.25rem;
   margin-top: 0.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }

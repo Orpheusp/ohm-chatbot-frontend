@@ -6,60 +6,67 @@ import {
   CardBaseSize,
 } from 'src/components/card_base/card_base';
 
+import {
+  CardResourceType,
+  InformationCardResource,
+  InformationCardData,
+} from 'src/datatypes';
+
 import './info_card.scss';
 
-export enum InfoCardMetadataType {
-  ADDRESS,
-  EMAIL_ADDRESS,
-  URL,
-  PHONE_NUMBER,
-}
-
-const icons = {
-  [InfoCardMetadataType.ADDRESS]: 'address',
-  [InfoCardMetadataType.EMAIL_ADDRESS]: 'email',
-  [InfoCardMetadataType.URL]: 'url',
-  [InfoCardMetadataType.PHONE_NUMBER]: 'phone',
-};
-
-export interface InfoCardMetadata {
-  type: InfoCardMetadataType;
-  label: string;
-}
-
-export interface InfoCardData {
-  title: string;
-  content: string;
-  metadata?: InfoCardMetadata[];
-}
-
-interface InfoCardMetadataRowProps {
-  content: InfoCardMetadata;
+interface InfoCardResourceProps {
+  data: InformationCardResource;
 }
 
 export interface InfoCardProps {
-  data: InfoCardData;
+  data: InformationCardData;
 }
 
 /** Chat Cart component */
-function InfoCardMetadataRow({
-  content,
-}: InfoCardMetadataRowProps): JSX.Element {
-  const { type, label } = content;
-  return (
-    <div className={'info-card-metadata-row'}>
-      <div className={`info-card-metadata-row__icon`}>
-        <div className={`icon-${icons[type]} icon`} />
+function InfoCardResource({ data }: InfoCardResourceProps): JSX.Element {
+  const { resource, resourceType, resourceText } = data;
+  let resourceContent: JSX.Element;
+
+  if (resourceType == CardResourceType.IMG) {
+    resourceContent = (
+      <div className={'info-card-resource__resource'}>
+        <img />
       </div>
-      <div className={'info-card-metadata-row__label'}>{label}</div>
+    );
+  } else if (resourceType == CardResourceType.URL) {
+    resourceContent = (
+      <div className={'info-card-resource__resource'}>
+        <div className={`info-card-resource__icon`}>
+          <div className={'icon-url icon'} />
+        </div>
+        <a className={'info-card-resource__label'} href={resource}>
+          {resource}
+        </a>
+      </div>
+    );
+  } else {
+    resourceContent = (
+      <div className={'info-card-resource__resource'}>
+        <div className={`info-card-resource__icon`}>
+          <div className={'icon-info icon'} />
+        </div>
+        <div className={'info-card-resource__label'}>{resource}</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={'info-card-resource'}>
+      <div className={'info-card-resource__content'}>{resourceText || ''}</div>
+      {resourceContent}
     </div>
   );
 }
 
 /** Chat Cart component */
 export function InfoCard({ data }: InfoCardProps): JSX.Element {
-  const { title, content } = data;
-  const metadata = data.metadata || [];
+  const text = data.supportingText || '';
+  const resources = data.resources || [];
   return (
     <CardBase
       size={CardBaseSize.MEDIUM}
@@ -67,11 +74,10 @@ export function InfoCard({ data }: InfoCardProps): JSX.Element {
       className={'info-card'}
     >
       <div className={'info-card__type'}>info</div>
-      <div className={'info-card__title'}>{title}</div>
-      <div className={'info-card__content'}>{content}</div>
-      <div className={'info-card__metadata-rows'}>
-        {metadata.map((row, i) => (
-          <InfoCardMetadataRow content={row} key={i} />
+      <div className={'info-card__title'}>{text}</div>
+      <div className={'info-card__resources'}>
+        {resources.map((resource, i) => (
+          <InfoCardResource data={resource} key={i} />
         ))}
       </div>
     </CardBase>

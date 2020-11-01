@@ -1,41 +1,64 @@
 import React from 'react';
 
-import { InfoCard, InfoCardMetadataType, InfoCardData } from './info_card';
+import { InfoCard } from './info_card';
+
+import { CardResourceType, InformationCardData } from 'src/datatypes';
 
 export default {
   title: 'Info Card',
   component: InfoCard,
 };
 
-const cpdcInfoCardData: InfoCardData = {
-  title: 'Career & Professional Development Center (CPDC)',
-  content:
-    'We provide services, programs and materials focusing on career ' +
-    'exploration and decision making, professional development, experiential ' +
-    'learning and employment assistance.',
-  metadata: [
+const urlInfoCardData: InformationCardData = {
+  supportingText: 'Immigration and internation travel resources',
+  resources: [
     {
-      type: InfoCardMetadataType.ADDRESS,
-      label: '5000 Forbes Avenue Pittsburgh, PA 15213',
-    },
-    {
-      type: InfoCardMetadataType.EMAIL_ADDRESS,
-      label: 'career@andrew.cmu.edu',
-    },
-    {
-      type: InfoCardMetadataType.URL,
-      label: 'www.cmu.edu/career/',
-    },
-    {
-      type: InfoCardMetadataType.PHONE_NUMBER,
-      label: '(412)268-2064',
+      resourceText:
+        "Here you'll find government resources and links related to " +
+        'immigration and international travel, including USCIS, SEVIS, ' +
+        'Visas, and embassy information.',
+      resource: 'https://www.cmu.edu/oie/immigration-and-travel/index.html',
+      resourceType: CardResourceType.URL,
     },
   ],
+  resourceCode: 'I01',
+  department: 'OIE',
+  owner: 'OieAdmin',
+  authRequired: false,
 };
 
-export const cpdcInfoCard = (): JSX.Element => (
-  <InfoCard data={cpdcInfoCardData} />
+export const urlInfoCard = (): JSX.Element => (
+  <InfoCard data={urlInfoCardData} />
 );
-cpdcInfoCard.story = {
-  name: 'CPDC Info Card',
+urlInfoCard.story = {
+  name: 'Info card with URL',
+};
+
+const urlInfoCardDataWithResourceText: InformationCardData = {
+  supportingText: 'Know all about maintaining your visa',
+  resources: [
+    {
+      resourceText: 'For newly admitted students, click here:',
+      resource:
+        'https://www.cmu.edu/oie/faq/f20sevpguidancefaqnewstudents.html',
+      resourceType: CardResourceType.URL,
+    },
+    {
+      resourceText: 'For continuing students, click here:',
+      resource:
+        'https://www.cmu.edu/oie/faq/f20sevpguidancefaqscurrentstudents.html',
+      resourceType: CardResourceType.URL,
+    },
+  ],
+  resourceCode: 'I01',
+  department: 'OIE',
+  owner: 'OieAdmin',
+  authRequired: false,
+};
+
+export const urlInfoCardWithResourceText = (): JSX.Element => (
+  <InfoCard data={urlInfoCardDataWithResourceText} />
+);
+urlInfoCardWithResourceText.story = {
+  name: 'Info card with multiple resources',
 };

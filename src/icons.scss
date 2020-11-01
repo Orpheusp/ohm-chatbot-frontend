@@ -32,7 +32,7 @@
 
 .icon-url {
   &::before {
-    content: '\e80b';
+    content: '\e157';
   }
 }
 
@@ -42,8 +42,14 @@
   }
 }
 
-.icon-right {
+.icon-next {
   &::before {
-    content: '\e315';
+    content: '\e409';
+  }
+}
+
+.icon-info {
+  &::before {
+    content: '\e88e';
   }
 }
