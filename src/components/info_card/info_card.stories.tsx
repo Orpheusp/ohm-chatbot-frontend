@@ -10,13 +10,13 @@ export default {
 };
 
 const urlInfoCardData: InformationCardData = {
-  supportingText: 'Immigration and internation travel resources',
+  title: 'Find immigration information with OIE',
+  supportingText:
+    "Here you'll find government resources and links related to immigration " +
+    'and international travel, including USCIS, SEVIS, visas, and embassy ' +
+    'information.',
   resources: [
     {
-      resourceText:
-        "Here you'll find government resources and links related to " +
-        'immigration and international travel, including USCIS, SEVIS, ' +
-        'Visas, and embassy information.',
       resource: 'https://www.cmu.edu/oie/immigration-and-travel/index.html',
       resourceType: CardResourceType.URL,
     },
@@ -35,7 +35,8 @@ urlInfoCard.story = {
 };
 
 const urlInfoCardDataWithMultipleResources: InformationCardData = {
-  supportingText: 'Know all about maintaining your visa',
+  title: 'Explore OIE for student visa information',
+  supportingText: 'Know all about your visa here',
   resources: [
     {
       resourceText: 'For newly admitted students, click here:',
@@ -64,10 +65,10 @@ urlInfoCardWithMultipleResources.story = {
 };
 
 const imageInfoCardData: InformationCardData = {
-  supportingText: 'Carnegie Mellon University school mascot',
+  title: 'Carnegie Mellon University school mascot',
+  supportingText: 'Meet Scottie, our school mascot!',
   resources: [
     {
-      resourceText: 'Meet Scottie, our school mascot!',
       resource:
         'https://www.cmu.edu/brand/brand-guidelines/images/scottycrop2-600x600.png',
       resourceType: CardResourceType.IMG,
@@ -87,10 +88,10 @@ imageInfoCard.story = {
 };
 
 const textInfoCardData: InformationCardData = {
-  supportingText: "Carnegie Mellon University's Vision",
+  title: "Carnegie Mellon University's Vision",
+  supportingText: "The school's vision is:",
   resources: [
     {
-      resourceText: "The school's vision is:",
       resource:
         'Carnegie Mellon University will have a transformative impact on ' +
         'society through continual innovation in education, research, ' +

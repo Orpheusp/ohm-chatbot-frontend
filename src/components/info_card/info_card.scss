@@ -8,6 +8,10 @@
   &__title {
     @include card-title;
   }
+
+  &__content {
+    @include card-content;
+  }
 }
 
 .info-card-resource {

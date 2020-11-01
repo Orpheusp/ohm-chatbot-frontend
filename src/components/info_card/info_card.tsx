@@ -69,7 +69,7 @@ function InfoCardResource({ data }: InfoCardResourceProps): JSX.Element {
 
 /** Chat Cart component */
 export function InfoCard({ data }: InfoCardProps): JSX.Element {
-  const text = data.supportingText || '';
+  const { title, supportingText } = data;
   const resources = data.resources || [];
   return (
     <CardBase
@@ -78,7 +78,8 @@ export function InfoCard({ data }: InfoCardProps): JSX.Element {
       className={'info-card'}
     >
       <div className={'info-card__type'}>info</div>
-      <div className={'info-card__title'}>{text}</div>
+      <div className={'info-card__title'}>{title}</div>
+      <div className={'info-card__content'}>{supportingText}</div>
       <div className={'info-card__resources'}>
         {resources.map((resource, i) => (
           <InfoCardResource data={resource} key={i} />

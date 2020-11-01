@@ -11,6 +11,7 @@ export interface InformationCardResource {
 }
 
 export interface InformationCardData {
+  title: string;
   resourceCode: string;
   department: string;
   resources?: InformationCardResource[];
