@@ -22,9 +22,7 @@ const oieCardData: TutorialCardData = {
 export const oieCard = (): JSX.Element => (
   <TutorialOverviewCard
     data={oieCardData}
-    enterTutorial={(data: TutorialCardData) => {
-      console.log(data);
-    }}
+    enterTutorial={(data: TutorialCardData) => {}}
   />
 );
 oieCard.story = {

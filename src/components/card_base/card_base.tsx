@@ -37,5 +37,9 @@ export function CardBase({
     classNames.push(className);
   }
 
-  return <div className={classNames.join(' ')}>{children}</div>;
+  return (
+    <div className={classNames.join(' ')} onClick={onClick}>
+      {children}
+    </div>
+  );
 }
