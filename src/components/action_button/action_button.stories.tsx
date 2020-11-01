@@ -1,21 +1,21 @@
 import React from 'react';
 
-import { TutorialButton } from './tutorial_button';
+import { ActionButton } from './action_button';
 
 export default {
-  title: 'Tutorial Button',
-  component: TutorialButton,
+  title: 'Action Button',
+  component: ActionButton,
 };
 
 export const active = (): JSX.Element => (
-  <TutorialButton label={'Test'} isActive={true} />
+  <ActionButton label={'Test'} isActive={true} />
 );
 active.story = {
   name: 'Active',
 };
 
 export const inactive = (): JSX.Element => (
-  <TutorialButton label={'Test'} isActive={false} />
+  <ActionButton label={'Test'} isActive={false} />
 );
 inactive.story = {
   name: 'Inactive',

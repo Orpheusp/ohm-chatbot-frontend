@@ -6,7 +6,7 @@ import {
   CardBaseStyle,
   CardBaseSize,
 } from 'src/components/card_base/card_base';
-import { TutorialButton } from 'src/components/tutorial_button/tutorial_button';
+import { ActionButton } from '../action_button/action_button';
 
 import './tutorial_card.scss';
 
@@ -52,7 +52,7 @@ export function TutorialCard({
 
   if (currentStep == steps.length - 1) {
     actionButton = (
-      <TutorialButton
+      <ActionButton
         label={'complete'}
         isActive={isForwardConditionMet}
         onClick={isForwardConditionMet ? continueTutorial : undefined}
@@ -60,7 +60,7 @@ export function TutorialCard({
     );
   } else {
     actionButton = (
-      <TutorialButton
+      <ActionButton
         label={'next'}
         isActive={isForwardConditionMet}
         onClick={isForwardConditionMet ? completeTutorial : undefined}
