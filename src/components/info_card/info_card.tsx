@@ -20,6 +20,7 @@ interface InfoCardResourceProps {
 
 export interface InfoCardProps {
   data: InformationCardData;
+  className?: string;
 }
 
 /** Info Card component */
@@ -68,14 +69,18 @@ function InfoCardResource({ data }: InfoCardResourceProps): JSX.Element {
 }
 
 /** Chat Cart component */
-export function InfoCard({ data }: InfoCardProps): JSX.Element {
+export function InfoCard({ data, className }: InfoCardProps): JSX.Element {
   const { title, supportingText } = data;
   const resources = data.resources || [];
+  const classNames = ['info-card'];
+  if (className) {
+    classNames.push(className);
+  }
   return (
     <CardBase
       size={CardBaseSize.MEDIUM}
       style={CardBaseStyle.WHITE}
-      className={'info-card'}
+      className={classNames.join(' ')}
     >
       <div className={'info-card__type'}>info</div>
       <div className={'info-card__title'}>{title}</div>

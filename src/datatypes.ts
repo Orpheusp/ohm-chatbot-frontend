@@ -12,6 +12,7 @@ export enum CardDataType {
 
 export interface BaseCardData {
   type: CardDataType;
+  resourceCode: string;
 }
 
 export enum ChatCardSender {
@@ -22,7 +23,6 @@ export enum ChatCardSender {
 export interface ChatCardData extends BaseCardData {
   message: string;
   sender: ChatCardSender;
-  resourceCode: string;
 }
 
 export interface InformationCardResource {
@@ -33,7 +33,6 @@ export interface InformationCardResource {
 
 export interface InformationCardData extends BaseCardData {
   title: string;
-  resourceCode: string;
   department: string;
   resources?: InformationCardResource[];
   owner: string;
@@ -55,7 +54,6 @@ export interface TutorialCardResource {
 
 export interface TutorialCardData extends BaseCardData {
   title: string;
-  resourceCode: string;
   department: string;
   resources: TutorialCardResource[];
   owner: string;

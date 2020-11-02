@@ -17,6 +17,7 @@ export interface TutorialCardProps {
   cancelTutorial: () => void;
   currentStep: number;
   isForwardConditionMet: boolean;
+  className?: string;
 }
 
 /** Utility function for creating progress bar */
@@ -44,6 +45,7 @@ export function TutorialCard({
   cancelTutorial,
   currentStep,
   isForwardConditionMet,
+  className,
 }: TutorialCardProps): JSX.Element {
   const { title, resources: steps } = data;
   const { resourceText: stepTitle, resource: stepContent } = steps[currentStep];
@@ -80,11 +82,16 @@ export function TutorialCard({
     ? 'tutorial-card--step-complete'
     : 'tutorial-card--step-pending';
 
+  const classNames = ['tutorial-card'];
+  if (className) {
+    classNames.push(className);
+  }
+
   return (
     <CardBase
       size={CardBaseSize.LARGE}
       style={CardBaseStyle.WHITE}
-      className={'tutorial-card'}
+      className={classNames.join(' ')}
     >
       <div
         className='tutorial-card__close-button'

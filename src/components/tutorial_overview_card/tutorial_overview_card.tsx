@@ -13,19 +13,25 @@ import './tutorial_overview_card.scss';
 export interface TutorialOverviewCardProps {
   data: TutorialCardData;
   enterTutorial: (data: TutorialCardData) => void;
+  className?: string;
 }
 
 /** Tutorial Overview Card component */
 export function TutorialOverviewCard({
   data,
   enterTutorial,
+  className,
 }: TutorialOverviewCardProps): JSX.Element {
   const { supportingText, title } = data;
+  const classNames = ['tutorial-overview-card'];
+  if (className) {
+    classNames.push(className);
+  }
   return (
     <CardBase
       size={CardBaseSize.MEDIUM}
       style={CardBaseStyle.WHITE}
-      className={'tutorial-overview-card'}
+      className={classNames.join(' ')}
       onClick={() => {
         enterTutorial(data);
       }}
