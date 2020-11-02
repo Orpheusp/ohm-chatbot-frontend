@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TutorialOverviewCard } from './tutorial_overview_card';
 
-import { TutorialCardData } from 'src/datatypes';
+import { TutorialCardData, CardDataType } from 'src/datatypes';
 
 export default {
   title: 'Tutorial Overview Card',
@@ -10,6 +10,7 @@ export default {
 };
 
 const oieCardData: TutorialCardData = {
+  type: CardDataType.TUTORIAL_CARD,
   title: 'Reach out to OIE using this quick tutorial!',
   resourceCode: 'T01',
   department: 'OIE',

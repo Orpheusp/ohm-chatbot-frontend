@@ -22,6 +22,7 @@ export enum ChatCardSender {
 export interface ChatCardData extends BaseCardData {
   message: string;
   sender: ChatCardSender;
+  resourceCode: string;
 }
 
 export interface InformationCardResource {

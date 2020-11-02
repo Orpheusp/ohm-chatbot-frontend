@@ -4,6 +4,7 @@ import {
   TutorialCardData,
   ForwardConditionType,
   CardResourceType,
+  CardDataType,
 } from 'src/datatypes';
 
 import { TutorialCard } from './tutorial_card';
@@ -14,6 +15,7 @@ export default {
 };
 
 const cpdcAppointmentCardData: TutorialCardData = {
+  type: CardDataType.TUTORIAL_CARD,
   title: 'Book An Appointment with CPDC',
   resourceCode: 'T01',
   department: 'CPDC',

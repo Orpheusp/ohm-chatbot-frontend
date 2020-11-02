@@ -2,7 +2,11 @@ import React from 'react';
 
 import { InfoCard } from './info_card';
 
-import { CardResourceType, InformationCardData } from 'src/datatypes';
+import {
+  CardResourceType,
+  InformationCardData,
+  CardDataType,
+} from 'src/datatypes';
 
 export default {
   title: 'Info Card',
@@ -10,6 +14,7 @@ export default {
 };
 
 const urlInfoCardData: InformationCardData = {
+  type: CardDataType.INFORMATION_CARD,
   title: 'Find immigration information with OIE',
   supportingText:
     "Here you'll find government resources and links related to immigration " +
@@ -35,6 +40,7 @@ urlInfoCard.story = {
 };
 
 const urlInfoCardDataWithMultipleResources: InformationCardData = {
+  type: CardDataType.INFORMATION_CARD,
   title: 'Explore OIE for student visa information',
   supportingText: 'Know all about your visa here',
   resources: [
@@ -65,6 +71,7 @@ urlInfoCardWithMultipleResources.story = {
 };
 
 const imageInfoCardData: InformationCardData = {
+  type: CardDataType.INFORMATION_CARD,
   title: 'Carnegie Mellon University school mascot',
   supportingText: 'Meet Scottie, our school mascot!',
   resources: [
@@ -88,6 +95,7 @@ imageInfoCard.story = {
 };
 
 const textInfoCardData: InformationCardData = {
+  type: CardDataType.INFORMATION_CARD,
   title: "Carnegie Mellon University's Vision",
   supportingText: "The school's vision is:",
   resources: [
