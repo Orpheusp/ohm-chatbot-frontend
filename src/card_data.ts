@@ -18,9 +18,16 @@ export const userChatCard: ChatCardData = {
 
 export const botChatCard: ChatCardData = {
   type: CardDataType.CHAT_CARD,
-  resourceCode: 'C01',
+  resourceCode: 'C02',
   sender: ChatCardSender.BOT,
   message: 'Hi Scottie, how can I help you?',
+};
+
+export const botChatCard2: ChatCardData = {
+  type: CardDataType.CHAT_CARD,
+  resourceCode: 'C03',
+  sender: ChatCardSender.BOT,
+  message: 'Here are some resources I have found for you:',
 };
 
 // Info cards
