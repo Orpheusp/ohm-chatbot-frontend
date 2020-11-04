@@ -1,9 +1,10 @@
 @import 'src/base.scss';
 
-.header {
+.app-header {
   @include bold-ft;
 
   background-color: #ffffff;
+  box-sizing: border-box;
   color: #c41e3a;
   cursor: pointer;
   font-size: 2rem;
