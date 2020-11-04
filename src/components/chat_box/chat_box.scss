@@ -2,6 +2,7 @@
 
 .chat-box {
   background-color: $background-white;
+  box-sizing: border-box;
   padding: 0.625rem;
   width: 31.25rem;
 
@@ -18,7 +19,7 @@
     padding: 1rem;
     resize: none;
     vertical-align: middle;
-    width: 25rem;
+    width: 24rem;
 
     &:focus {
       outline: none;
