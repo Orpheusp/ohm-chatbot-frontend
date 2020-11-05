@@ -6,7 +6,7 @@
   padding: 1rem;
 
   &--small {
-    width: $card-width-small;
+    max-width: $card-width-small;
   }
 
   &--medium {
