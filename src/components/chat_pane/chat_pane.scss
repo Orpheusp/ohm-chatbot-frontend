@@ -8,6 +8,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   max-height: $max-app-height;
+  min-height: 5rem;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 1rem 0;
