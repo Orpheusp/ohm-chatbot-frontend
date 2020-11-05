@@ -31,6 +31,7 @@ function tutorialProgressBar(
     dots.push(
       <div
         className={`tutorial-progress-dot tutorial-progress-dot--${classNameSuffix}`}
+        key={`dot-${i}`}
       />
     );
   }
@@ -57,7 +58,7 @@ export function TutorialCard({
       <ActionButton
         label={'complete'}
         isActive={isForwardConditionMet}
-        onClick={isForwardConditionMet ? continueTutorial : undefined}
+        onClick={isForwardConditionMet ? completeTutorial : undefined}
       />
     );
   } else {
@@ -65,7 +66,7 @@ export function TutorialCard({
       <ActionButton
         label={'next'}
         isActive={isForwardConditionMet}
-        onClick={isForwardConditionMet ? completeTutorial : undefined}
+        onClick={isForwardConditionMet ? continueTutorial : undefined}
       />
     );
   }

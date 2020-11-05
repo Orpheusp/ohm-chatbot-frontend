@@ -15,7 +15,9 @@ export default {
   component: ChatPane,
 };
 
-export const chatPane = (): JSX.Element => <ChatPane chats={[userChatCard]} />;
+export const chatPane = (): JSX.Element => (
+  <ChatPane chats={[userChatCard]} enterTutorial={() => {}} />
+);
 chatPane.story = {
   name: 'default',
 };
@@ -28,7 +30,9 @@ const chats = [
   urlInfoCardDataWithMultipleResources,
 ];
 
-export const chatPaneScrollable = (): JSX.Element => <ChatPane chats={chats} />;
+export const chatPaneScrollable = (): JSX.Element => (
+  <ChatPane chats={chats} enterTutorial={() => {}} />
+);
 chatPaneScrollable.story = {
   name: 'scrollable',
 };

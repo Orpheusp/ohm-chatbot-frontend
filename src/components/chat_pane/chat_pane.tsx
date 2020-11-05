@@ -6,6 +6,7 @@ import {
   instanceOfInformationCardData,
   instanceOfTutorialCardData,
   ChatCardSender,
+  TutorialCardData,
 } from 'src/datatypes';
 import { InfoCard } from 'src/components/info_card/info_card';
 import { ChatCard } from 'src/components/chat_card/chat_card';
@@ -15,10 +16,11 @@ import './chat_pane.scss';
 
 export interface ChatPaneProps {
   chats: BaseCardData[];
+  enterTutorial: (tutorial: TutorialCardData) => void;
 }
 
 /** Chat Box component */
-export function ChatPane({ chats }: ChatPaneProps): JSX.Element {
+export function ChatPane({ chats, enterTutorial }: ChatPaneProps): JSX.Element {
   const chatConmponents: JSX.Element[] = [];
 
   for (let i = 0; i < chats.length; i++) {
@@ -28,7 +30,7 @@ export function ChatPane({ chats }: ChatPaneProps): JSX.Element {
         <div className={'chat-pane__card-container'}>
           <ChatCard
             data={chat}
-            key={chat.resourceCode}
+            key={i}
             className={
               chat.sender == ChatCardSender.USER
                 ? 'chat-pane__card--user'
@@ -40,11 +42,7 @@ export function ChatPane({ chats }: ChatPaneProps): JSX.Element {
     } else if (instanceOfInformationCardData(chat)) {
       chatConmponents.push(
         <div className={'chat-pane__card-container'}>
-          <InfoCard
-            data={chat}
-            key={chat.resourceCode}
-            className={'chat-pane__card--bot'}
-          />
+          <InfoCard data={chat} key={i} className={'chat-pane__card--bot'} />
         </div>
       );
     } else if (instanceOfTutorialCardData(chat)) {
@@ -52,8 +50,8 @@ export function ChatPane({ chats }: ChatPaneProps): JSX.Element {
         <div className={'chat-pane__card-container'}>
           <TutorialOverviewCard
             data={chat}
-            enterTutorial={() => {}}
-            key={chat.resourceCode}
+            enterTutorial={enterTutorial}
+            key={i}
             className={'chat-pane__card--bot'}
           />
         </div>
