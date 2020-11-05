@@ -5,6 +5,7 @@ import { BaseCardData } from 'src/datatypes';
 export enum MessageStoreActionType {
   ADD_USER_MESSAGE = 'ADD_USER_MESSAGE',
   ADD_BOT_MESSAGE = 'ADD_BOT_MESSAGE',
+  UPDATE_USER_INPUT = 'UPDATE_USER_INPUT',
 }
 
 export interface MessageDispatcherPayload {
@@ -27,6 +28,15 @@ export const MessageStoreAction = {
       message,
     });
   },
+  updateUserInput: (message: string): void => {
+    messageDispatcher.dispatch({
+      type: MessageStoreActionType.UPDATE_USER_INPUT,
+      message,
+    });
+  },
 };
 
-export type MessageStoreState = Array<BaseCardData>;
+export interface MessageStoreState {
+  userInput: string;
+  messages: BaseCardData[];
+}
