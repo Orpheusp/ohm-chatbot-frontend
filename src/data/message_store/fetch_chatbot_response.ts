@@ -1,7 +1,7 @@
 import { BaseCardData } from 'src/datatypes';
 import { MessageStoreAction } from './message_store_action';
 
-const CHATBOT_ENDPOINT_URL = '/chat';
+export const CHATBOT_ENDPOINT_URL = '/chats';
 
 /** Fetch chatbot data from backend. */
 export async function fetchChatbotResponse(message: string): Promise<void> {
