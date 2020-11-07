@@ -12,7 +12,6 @@ describe('fetchChatbotResponse', () => {
     resourceCode: 'C01',
   };
   let fetchMock: jest.Mock;
-  const originalFetch = global.fetch;
 
   beforeEach(() => {
     fetchMock = jest.fn(() =>
@@ -21,10 +20,6 @@ describe('fetchChatbotResponse', () => {
       } as Response)
     );
     global.fetch = fetchMock;
-  });
-
-  afterAll(() => {
-    global.fetch = originalFetch;
   });
 
   test('it fetches chat response from the specified endpoint', async () => {
