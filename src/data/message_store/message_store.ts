@@ -64,6 +64,10 @@ export class MessageStore extends ReduceStore<
       };
     }
 
+    if (action.type == MessageStoreActionType.GET_WELCOME_MESSAGE) {
+      fetchChatbotResponse('');
+    }
+
     return state;
   }
 

@@ -6,6 +6,7 @@ export enum MessageStoreActionType {
   ADD_USER_MESSAGE = 'ADD_USER_MESSAGE',
   ADD_BOT_MESSAGE = 'ADD_BOT_MESSAGE',
   UPDATE_USER_INPUT = 'UPDATE_USER_INPUT',
+  GET_WELCOME_MESSAGE = 'GET_WELCOME_MESSAGE',
 }
 
 export interface MessageDispatcherPayload {
@@ -32,6 +33,11 @@ export const MessageStoreAction = {
     messageDispatcher.dispatch({
       type: MessageStoreActionType.UPDATE_USER_INPUT,
       message,
+    });
+  },
+  getWelcomeMessage: (): void => {
+    messageDispatcher.dispatch({
+      type: MessageStoreActionType.GET_WELCOME_MESSAGE,
     });
   },
 };

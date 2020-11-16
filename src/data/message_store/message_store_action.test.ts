@@ -40,4 +40,11 @@ describe('MessageStoreAction', () => {
       message,
     });
   });
+
+  test('it gets welcome message when asked', () => {
+    MessageStoreAction.getWelcomeMessage();
+    expect(messageDispatcher.dispatch as jest.Mock).toHaveBeenCalledWith({
+      type: MessageStoreActionType.GET_WELCOME_MESSAGE,
+    });
+  });
 });
