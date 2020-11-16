@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700');
+
+@import './icons.scss';
+
+$accent-red: #c41e3a;
+$text-black: #222222;
+$text-grey: #999999;
+$border-grey: #e5e5e5;
+$background-white: #ffffff;
+$accent-yellow: #f2c94c;
+$accent-green: #27ae60;
+$background-grey: #f5f5f5;
+
+$card-width-small: 16rem;
+$card-width-medium: 21rem;
+$card-width-large: 30rem;
+$app-width: 31.25rem;
+$max-app-height: 35rem;
+
+body {
+  /* stylelint-disable-next-line */
+  font-size: 16px;
+}
+
+@mixin base-ft {
+  font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', Arial, Helvetica,
+    sans-serif;
+}
+
+@mixin regular-ft {
+  @include base-ft;
+
+  font-style: normal;
+}
+
+@mixin medium-ft {
+  @include regular-ft;
+
+  font-weight: 500;
+}
+
+@mixin bold-ft {
+  @include regular-ft;
+
+  font-weight: 700;
+}
+
+@mixin italic-ft {
+  @include base-ft;
+
+  font-style: italic;
+}
+
+@mixin strike-through-ft {
+  @include regular-ft;
+
+  text-decoration: line-through;
+}
+
+@mixin card-type-label {
+  @include regular-ft;
+
+  color: $accent-red;
+  font-size: 0.75rem;
+  letter-spacing: 0.125rem;
+  line-height: 0.75rem;
+  text-transform: uppercase;
+}
+
+@mixin card-title {
+  @include medium-ft;
+
+  color: $text-black;
+  font-size: 1.5rem;
+  hyphens: auto;
+  line-height: 1.5rem;
+  margin-top: 0.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+@mixin card-subtitle {
+  @include medium-ft;
+
+  color: $accent-red;
+  font-size: 0.75rem;
+  hyphens: auto;
+  letter-spacing: 0.125rem;
+  line-height: 0.75rem;
+  margin-top: 0.25rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+@mixin card-content {
+  @include regular-ft;
+
+  color: $text-grey;
+  font-size: 1rem;
+  hyphens: auto;
+  line-height: 1.25rem;
+  margin-top: 0.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+@mixin grey-border {
+  border: 1px solid $border-grey;
+}

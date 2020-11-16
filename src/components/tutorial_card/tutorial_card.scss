@@ -1,0 +1,101 @@
+@import 'src/base.scss';
+
+.tutorial-card {
+  position: relative;
+
+  &__type {
+    @include card-type-label;
+  }
+
+  &__tutorial-name {
+    @include card-subtitle;
+  }
+
+  &__step-name {
+    @include card-title;
+  }
+
+  &__step-detail {
+    @include card-content;
+  }
+
+  &__progress {
+    margin-top: 0.5rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+
+  &__close-button {
+    border-radius: 50%;
+    cursor: pointer;
+    height: 1rem;
+    padding: 0.125rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    transition: background-color linear 0.2s;
+    width: 1rem;
+
+    &:before {
+      @include material-icons;
+
+      color: $text-grey;
+      content: '\e14c';
+      font-size: 1rem;
+    }
+
+    &:hover {
+      background-color: $text-grey;
+
+      &:before {
+        color: $background-white;
+      }
+    }
+  }
+
+  &--step-complete:after,
+  &--step-pending:after {
+    @include material-icons;
+
+    background-color: $text-black;
+    border-radius: 50%;
+    color: $background-white;
+    content: '\e876';
+    display: inline-block;
+    height: 1.5rem;
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+    vertical-align: text-bottom;
+    width: 1.5rem;
+  }
+
+  &--step-complete:after {
+    background-color: $accent-green;
+    content: '\e876';
+  }
+
+  &--step-pending:after {
+    background-color: $accent-yellow;
+    content: '\e88b';
+  }
+}
+
+.tutorial-progress-dot--done,
+.tutorial-progress-dot--undone {
+  border: 1px solid $accent-red;
+  border-radius: 50%;
+  display: inline-block;
+  height: 0.625rem;
+  margin-right: 0.25rem;
+  width: 0.625rem;
+}
+
+.tutorial-progress-dot--done {
+  background-color: $accent-red;
+}

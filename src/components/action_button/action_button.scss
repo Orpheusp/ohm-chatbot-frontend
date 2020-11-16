@@ -1,0 +1,24 @@
+@import 'src/base.scss';
+
+.action-button {
+  @include medium-ft;
+
+  border-radius: 0.25rem;
+  color: $text-grey;
+  display: inline-block;
+  font-size: 1rem;
+  letter-spacing: 0.125rem;
+  padding: 0.5rem 0.75rem;
+  text-transform: uppercase;
+
+  &--active {
+    color: $accent-red;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $accent-red;
+      color: $background-white;
+      transition: all linear 0.15s;
+    }
+  }
+}

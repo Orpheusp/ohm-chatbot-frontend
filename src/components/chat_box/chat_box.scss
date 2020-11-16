@@ -1,0 +1,43 @@
+@import 'src/base.scss';
+
+.chat-box {
+  @include grey-border;
+
+  background-color: $background-white;
+  box-sizing: border-box;
+  padding: 0.625rem;
+  width: 31.25rem;
+
+  &__input {
+    @include regular-ft;
+
+    background: none;
+    background-color: $background-grey;
+    border: none;
+    border-radius: 0.625rem;
+    color: $text-black;
+    display: inline-block;
+    font-size: 1rem;
+    padding: 1rem;
+    resize: none;
+    vertical-align: middle;
+    width: 24rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__submit-button {
+    display: inline-block;
+    margin-left: 0.75rem;
+    vertical-align: middle;
+
+    &:before {
+      @include material-icons;
+
+      content: '\e163';
+      font-size: 1.5rem;
+    }
+  }
+}

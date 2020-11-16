@@ -1,0 +1,56 @@
+@import 'src/base.scss';
+
+.info-card {
+  &__type {
+    @include card-type-label;
+  }
+
+  &__title {
+    @include card-title;
+  }
+
+  &__content {
+    @include card-content;
+  }
+}
+
+.info-card-resource {
+  margin-top: 0.25rem;
+
+  &__resource {
+    margin-top: 0.125rem;
+  }
+
+  &__image {
+    max-width: $card-width-medium;
+  }
+
+  &__icon {
+    color: $accent-red;
+    display: inline-block;
+    font-size: 0.875rem;
+    height: 0.875rem;
+    letter-spacing: 0.125rem;
+    margin-right: 0.125rem;
+    vertical-align: top;
+    width: 0.875rem;
+  }
+
+  &__label {
+    @include regular-ft;
+
+    color: $accent-red;
+    display: inline-block;
+    font-size: 0.875rem;
+    hyphens: auto;
+    line-height: 0.875rem;
+    max-width: $card-width-medium - 1rem;
+    overflow-wrap: break-word;
+    vertical-align: top;
+    word-wrap: break-word;
+  }
+
+  &__content {
+    @include card-content;
+  }
+}

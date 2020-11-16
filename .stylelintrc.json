@@ -1,0 +1,14 @@
+{
+  "extends": ["stylelint-prettier/recommended"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "color-no-invalid-hex": true,
+    "color-named": "never",
+    "unit-blacklist": ["px", "em"],
+    "order/properties-alphabetical-order": true,
+    "number-max-precision": 3,
+    "color-hex-length": "long",
+    "number-leading-zero": "always",
+    "number-no-trailing-zeros": true
+  }
+}

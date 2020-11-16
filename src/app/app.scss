@@ -1,0 +1,17 @@
+@import 'src/base.scss';
+
+.app {
+  &__tutorial-container {
+    @include grey-border;
+
+    background-color: $background-grey;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    width: $app-width;
+  }
+
+  &__tutorial-card {
+    margin: 0.5rem;
+  }
+}

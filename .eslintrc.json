@@ -1,0 +1,57 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "google",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:json/recommended",
+    "plugin:jsdoc/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "jsdoc"],
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "valid-jsdoc": "off",
+    "require-jsdoc": "off"
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*.ts", "src/**/*.tsx"],
+      "rules": {
+        "jsdoc/require-returns": 0,
+        "jsdoc/require-returns-check": 0,
+        "jsdoc/require-returns-description": 0,
+        "jsdoc/require-returns-type": 0,
+        "jsdoc/require-param-type": 0,
+        "jsdoc/require-param": 0,
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-non-null-assertion": "off"
+      }
+    },
+    {
+      "files": ["src/**/*.tsx"],
+      "rules": {
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ]
+}

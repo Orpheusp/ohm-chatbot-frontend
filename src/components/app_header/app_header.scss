@@ -1,0 +1,14 @@
+@import 'src/base.scss';
+
+.app-header {
+  @include bold-ft;
+  @include grey-border;
+
+  background-color: #ffffff;
+  box-sizing: border-box;
+  color: #c41e3a;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  width: $app-width;
+}

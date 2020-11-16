@@ -1,0 +1,39 @@
+@import 'src/base.scss';
+
+.card-base {
+  border-radius: 0.25rem;
+  margin: 0.25rem 0.675rem;
+  padding: 1rem;
+
+  &--small {
+    max-width: $card-width-small;
+  }
+
+  &--medium {
+    width: $card-width-medium;
+  }
+
+  &--large {
+    width: $card-width-large;
+  }
+
+  &--red {
+    background-color: $accent-red;
+    color: $background-white;
+  }
+
+  &--white {
+    background-color: $background-white;
+    border: 1px solid $border-grey;
+    color: $text-black;
+  }
+
+  &--clickable {
+    cursor: pointer;
+    transition: box-shadow linear 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 0.5rem 0 rgba(170, 170, 170, 0.35);
+    }
+  }
+}
