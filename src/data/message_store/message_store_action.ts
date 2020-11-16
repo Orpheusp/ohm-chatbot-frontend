@@ -22,7 +22,7 @@ export const MessageStoreAction = {
       message,
     });
   },
-  addBotMessage: (message: BaseCardData): void => {
+  addBotMessages: (message: BaseCardData[]): void => {
     messageDispatcher.dispatch({
       type: MessageStoreActionType.ADD_BOT_MESSAGE,
       message,

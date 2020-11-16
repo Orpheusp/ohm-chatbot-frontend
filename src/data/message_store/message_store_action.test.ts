@@ -25,7 +25,7 @@ describe('MessageStoreAction', () => {
       type: CardDataType.CHAT_CARD,
       resourceCode: 'C01',
     };
-    MessageStoreAction.addBotMessage(message);
+    MessageStoreAction.addBotMessages([message]);
     expect(messageDispatcher.dispatch as jest.Mock).toHaveBeenCalledWith({
       type: MessageStoreActionType.ADD_BOT_MESSAGE,
       message,

@@ -2,7 +2,7 @@ import { BaseCardData, CardDataType } from 'src/datatypes';
 
 import {
   fetchChatbotResponse,
-  CHATBOT_ENDPOINT_URL,
+  CHATBOT_ENDPOINT_URL_DEV,
 } from './fetch_chatbot_response';
 import { MessageStoreAction } from './message_store_action';
 
@@ -25,7 +25,7 @@ describe('fetchChatbotResponse', () => {
   test('it fetches chat response from the specified endpoint', async () => {
     const message = 'test';
     await fetchChatbotResponse(message);
-    expect(fetchMock).toHaveBeenCalledWith(CHATBOT_ENDPOINT_URL, {
+    expect(fetchMock).toHaveBeenCalledWith(CHATBOT_ENDPOINT_URL_DEV, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message }),
@@ -33,11 +33,11 @@ describe('fetchChatbotResponse', () => {
   });
 
   test('it adds received card data to message store', async () => {
-    jest.spyOn(MessageStoreAction, 'addBotMessage');
+    jest.spyOn(MessageStoreAction, 'addBotMessages');
 
     const message = 'test';
     await fetchChatbotResponse(message);
-    expect(MessageStoreAction.addBotMessage as jest.Mock).toHaveBeenCalledWith(
+    expect(MessageStoreAction.addBotMessages as jest.Mock).toHaveBeenCalledWith(
       cardData
     );
   });

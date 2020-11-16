@@ -10,7 +10,7 @@ export default {
   component: App,
 };
 
-MessageStoreAction.addBotMessage(cpdcAppointmentCardData);
+MessageStoreAction.addBotMessages([cpdcAppointmentCardData]);
 export const base = (): JSX.Element => <App />;
 base.story = {
   name: 'Base',

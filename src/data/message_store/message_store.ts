@@ -52,7 +52,7 @@ export class MessageStore extends ReduceStore<
 
     if (action.type == MessageStoreActionType.ADD_BOT_MESSAGE) {
       return {
-        messages: [...state.messages, action.message as BaseCardData],
+        messages: [...state.messages, ...(action.message as BaseCardData[])],
         userInput: state.userInput,
       };
     }
