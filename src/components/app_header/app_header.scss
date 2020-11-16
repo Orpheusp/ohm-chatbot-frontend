@@ -2,9 +2,9 @@
 
 .app-header {
   @include bold-ft;
+  @include grey-border;
 
   background-color: #ffffff;
-  border-bottom: 1px solid $border-grey;
   box-sizing: border-box;
   color: #c41e3a;
   cursor: pointer;

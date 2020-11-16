@@ -1,6 +1,8 @@
 @import 'src/base.scss';
 
 .chat-pane {
+  @include grey-border;
+
   align-items: flex-start;
   background-color: $background-grey;
   box-sizing: border-box;

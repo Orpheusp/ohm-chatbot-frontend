@@ -6,6 +6,8 @@ import { ChatBoxContainer } from 'src/components/chat_box/chat_box_container';
 import { TutorialCardData } from 'src/datatypes';
 import { TutorialCard } from 'src/components/tutorial_card/tutorial_card';
 
+import './app.scss';
+
 export interface AppState {
   activeTutorial?: TutorialCardData;
   activeTutorialStep?: number;
@@ -81,14 +83,17 @@ export class App extends React.Component<unknown, AppState> {
       return (
         <div className={'app'}>
           <AppHeader onToggleHeader={() => {}} />
-          <TutorialCard
-            data={activeTutorial}
-            completeTutorial={this.exitTutorial}
-            continueTutorial={this.continueTutorial}
-            cancelTutorial={this.exitTutorial}
-            currentStep={activeTutorialStep}
-            isForwardConditionMet={isActiveTutorialForwardConditionMet}
-          />
+          <div className={'app__tutorial-container'}>
+            <TutorialCard
+              className={'app__tutorial-card'}
+              data={activeTutorial}
+              completeTutorial={this.exitTutorial}
+              continueTutorial={this.continueTutorial}
+              cancelTutorial={this.exitTutorial}
+              currentStep={activeTutorialStep}
+              isForwardConditionMet={isActiveTutorialForwardConditionMet}
+            />
+          </div>
         </div>
       );
     }

@@ -1,8 +1,9 @@
 @import 'src/base.scss';
 
 .chat-box {
+  @include grey-border;
+
   background-color: $background-white;
-  border-top: 1px solid $border-grey;
   box-sizing: border-box;
   padding: 0.625rem;
   width: 31.25rem;
@@ -29,7 +30,7 @@
 
   &__submit-button {
     display: inline-block;
-    margin-left: 1rem;
+    margin-left: 0.75rem;
     vertical-align: middle;
 
     &:before {
