@@ -30,7 +30,7 @@ export function ChatPane({ chats, enterTutorial }: ChatPaneProps): JSX.Element {
         <div className={'chat-pane__card-container'}>
           <ChatCard
             data={chat}
-            key={i}
+            key={chat.resourceCode}
             className={
               chat.sender == ChatCardSender.USER
                 ? 'chat-pane__card--user'
@@ -42,7 +42,11 @@ export function ChatPane({ chats, enterTutorial }: ChatPaneProps): JSX.Element {
     } else if (instanceOfInformationCardData(chat)) {
       chatConmponents.push(
         <div className={'chat-pane__card-container'}>
-          <InfoCard data={chat} key={i} className={'chat-pane__card--bot'} />
+          <InfoCard
+            data={chat}
+            key={chat.resourceCode}
+            className={'chat-pane__card--bot'}
+          />
         </div>
       );
     } else if (instanceOfTutorialCardData(chat)) {
@@ -51,7 +55,7 @@ export function ChatPane({ chats, enterTutorial }: ChatPaneProps): JSX.Element {
           <TutorialOverviewCard
             data={chat}
             enterTutorial={enterTutorial}
-            key={i}
+            key={chat.resourceCode}
             className={'chat-pane__card--bot'}
           />
         </div>

@@ -1,7 +1,7 @@
 import { BaseCardData } from 'src/datatypes';
 import { MessageStoreAction } from './message_store_action';
 
-export const CHATBOT_ENDPOINT_URL_DEV = 'http://127.0.0.1:5000/chats';
+export const CHATBOT_ENDPOINT_URL_DEV = 'http://localhost:8010/proxy/chats';
 export const CHATBOT_ENDPOINT_URL_PROD = '';
 
 /** Fetch chatbot data from backend. */
@@ -15,6 +15,7 @@ export async function fetchChatbotResponse(message: string): Promise<void> {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
+    credentials: 'include',
   });
 
   const cardData: BaseCardData[] = await response.json();
