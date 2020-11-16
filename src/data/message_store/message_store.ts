@@ -73,10 +73,14 @@ export class MessageStore extends ReduceStore<
 
   private generateChatCardData(message: string): ChatCardData {
     this.userMessageCounter += 1;
+    const resourceCode =
+      this.userMessageCounter < 10
+        ? `U0${this.userMessageCounter}`
+        : `U${this.userMessageCounter}`;
 
     return {
       type: CardDataType.CHAT_CARD,
-      resourceCode: `U${this.userMessageCounter}`,
+      resourceCode,
       sender: ChatCardSender.USER,
       message: message as string,
     };
