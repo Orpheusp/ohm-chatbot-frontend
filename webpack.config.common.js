@@ -8,6 +8,7 @@ const path = require('path');
 const { mergeWithCustomize, customizeObject } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const codeExt = ['.js', '.jsx', '.ts', '.tsx', '.css'];
 const imageExt = ['png', 'svg', 'jpg', 'gif'];
@@ -60,6 +61,12 @@ const commonConfig = {
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       lang: 'en-US',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: './assets', to: '' },
+        { from: './manifest.json', to: '' },
+      ],
     }),
   ],
 };

@@ -5,7 +5,6 @@
 // Disabling this lint rule since `__dirname` is a global variable in Node.js,
 // but it is not recognized by the linter.
 const { commonConfig, mergeConfig } = require('./webpack.config.common.js');
-const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = mergeConfig(commonConfig, {
   mode: 'production',
@@ -41,12 +40,4 @@ module.exports = mergeConfig(commonConfig, {
     ],
   },
   output: { filename: '[name].[hash].bundle.js' },
-  plugins: [
-    new CopyPlugin({
-      patterns: [
-        { from: './assets', to: '' },
-        { from: './manifest.json', to: '' },
-      ],
-    }),
-  ],
 });
