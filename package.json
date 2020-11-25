@@ -10,7 +10,7 @@
     "build": "webpack --config=webpack.config.prod.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "proxy": "lcp --proxyUrl http://127.0.0.1:5000/ --port 3000 --credentials"
+    "proxy": "lcp --proxyUrl http://127.0.0.1:5000 --origin http://localhost:3000 --credentials"
   },
   "repository": {
     "type": "git",
