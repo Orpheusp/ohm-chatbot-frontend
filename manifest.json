@@ -1,9 +1,9 @@
 {
   "name": "OHM Chatbot",
   "version": "1.0.0",
-  "description": "Chatbot for CMU student onboarding",
+  "description": "Chatbot for CMU student onboarding.",
   "permissions": [],
-  "page_action": {
+  "browser_action": {
     "default_popup": "index.html",
     "default_icon": {
       "16": "images/ohm_icon16.png",
