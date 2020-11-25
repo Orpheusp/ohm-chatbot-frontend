@@ -17,9 +17,12 @@ $card-width-large: 30rem;
 $app-width: 31.25rem;
 $max-app-height: 35rem;
 
-body {
+html {
   /* stylelint-disable-next-line */
-  font-size: 16px;
+  font-size: 12px;
+}
+
+body {
   margin: 0;
 }
 
