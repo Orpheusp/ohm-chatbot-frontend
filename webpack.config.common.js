@@ -8,6 +8,7 @@ const path = require('path');
 const { mergeWithCustomize, customizeObject } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const codeExt = ['.js', '.jsx', '.ts', '.tsx', '.css'];
 const imageExt = ['png', 'svg', 'jpg', 'gif'];
@@ -28,14 +29,6 @@ const commonConfig = {
   // included.
   module: {
     rules: [
-      {
-        // Transforming TSX
-        test: /\.(ts|tsx)$/,
-        use: [
-          { loader: 'ts-loader' },
-          { loader: 'react-docgen-typescript-loader' },
-        ],
-      },
       {
         // Images
         test: /\.(png|svg|jpg|gif)$/,
@@ -61,13 +54,19 @@ const commonConfig = {
     path: path.join(__dirname, 'dist/'),
     // Specifies what directory the bundle should go in, and tells
     // webpack-dev-server where to serve files from.
-    publicPath: '/',
+    publicPath: './',
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       lang: 'en-US',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: './assets', to: '' },
+        { from: './manifest.json', to: '' },
+      ],
     }),
   ],
 };

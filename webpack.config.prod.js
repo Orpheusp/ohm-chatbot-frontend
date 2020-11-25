@@ -11,8 +11,33 @@ module.exports = mergeConfig(commonConfig, {
   // Defines how exported javascript modules are transformed and which ones are
   // included.
   // Where to put the bundled code.
-  output: {
-    filename: '[name].[hash].bundle.js',
+  module: {
+    rules: [
+      {
+        // Transforming TSX
+        test: /\.(ts|tsx)$/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: { configFile: 'tsconfig.prod.json' },
+          },
+        ],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: { sourceMap: false },
+          },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: false },
+          },
+        ],
+      },
+    ],
   },
-  devtool: 'source-map',
+  output: { filename: '[name].[hash].bundle.js' },
 });

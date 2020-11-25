@@ -1,6 +1,6 @@
 {
   "name": "ohm-frontend",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "UI front-end of OHM, a chatbot for CMU student onboarding.",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "build-dev": "webpack --config=webpack.config.dev.js --mode development",
     "build": "webpack --config=webpack.config.prod.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "proxy": "lcp --proxyUrl http://127.0.0.1:5000/ --port 3000"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "@typescript-eslint/parser": "^4.5.0",
     "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.3.2",
     "css-loader": "^5.0.0",
     "eslint": "^7.2.0",
     "eslint-config-google": "^0.14.0",
