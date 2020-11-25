@@ -1,6 +1,6 @@
 {
   "name": "ohm-frontend",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "UI front-end of OHM, a chatbot for CMU student onboarding.",
   "main": "index.js",
   "scripts": {
