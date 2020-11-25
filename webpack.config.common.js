@@ -29,14 +29,6 @@ const commonConfig = {
   module: {
     rules: [
       {
-        // Transforming TSX
-        test: /\.(ts|tsx)$/,
-        use: [
-          { loader: 'ts-loader' },
-          { loader: 'react-docgen-typescript-loader' },
-        ],
-      },
-      {
         // Images
         test: /\.(png|svg|jpg|gif)$/,
         use: 'file-loader',
@@ -61,7 +53,7 @@ const commonConfig = {
     path: path.join(__dirname, 'dist/'),
     // Specifies what directory the bundle should go in, and tells
     // webpack-dev-server where to serve files from.
-    publicPath: '/',
+    publicPath: './',
   },
   plugins: [
     new CleanWebpackPlugin(),

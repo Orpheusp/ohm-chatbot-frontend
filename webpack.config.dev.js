@@ -13,20 +13,24 @@ module.exports = mergeConfig(commonConfig, {
   module: {
     rules: [
       {
+        // Transforming TSX
+        test: /\.(ts|tsx)$/,
+        use: [
+          { loader: 'ts-loader' },
+          { loader: 'react-docgen-typescript-loader' },
+        ],
+      },
+      {
         test: /\.s[ac]ss$/i,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
+            options: { sourceMap: true },
           },
           {
             loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
+            options: { sourceMap: true },
           },
         ],
       },
