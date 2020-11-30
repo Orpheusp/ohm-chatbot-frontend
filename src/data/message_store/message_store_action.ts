@@ -2,16 +2,6 @@ import { Dispatcher } from 'flux';
 
 import { BaseCardData } from 'src/datatypes';
 
-export enum ChromeRuntimeMessageType {
-  BACK_UP_MESSAGE_STORE = 'BACK_UP_MESSAGE_STORE',
-  GET_MESSAGE_STORE_BACKUP = 'GET_MESSAGE_STORE_BACKUP',
-}
-
-export interface ChromeRuntimeMessagePayload {
-  type: ChromeRuntimeMessageType;
-  message?: unknown;
-}
-
 export enum MessageStoreActionType {
   ADD_USER_MESSAGE = 'ADD_USER_MESSAGE',
   ADD_BOT_MESSAGE = 'ADD_BOT_MESSAGE',
@@ -64,7 +54,7 @@ export interface MessageStoreState {
   messages: BaseCardData[];
 }
 
-export interface BackgroundStorageData {
+export interface MessageStoreStateBackupData {
   messageStoreState: MessageStoreState;
   lastActiveTimestamp: number;
 }

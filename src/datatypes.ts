@@ -78,3 +78,15 @@ export function instanceOfTutorialCardData(
 ): object is TutorialCardData {
   return object.type == CardDataType.TUTORIAL_CARD;
 }
+
+export enum ChromeRuntimeMessageType {
+  BACK_UP_MESSAGE_STORE = 'BACK_UP_MESSAGE_STORE',
+  GET_MESSAGE_STORE_BACKUP = 'GET_MESSAGE_STORE_BACKUP',
+  BACK_UP_APP_STATE = 'BACK_UP_APP_STATE',
+  GET_APP_STATE_BACKUP = 'GET_APP_STATE_BACKUP',
+}
+
+export interface ChromeRuntimeMessagePayload {
+  type: ChromeRuntimeMessageType;
+  message?: unknown;
+}
