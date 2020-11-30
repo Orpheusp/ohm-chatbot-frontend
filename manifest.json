@@ -1,6 +1,6 @@
 {
   "name": "OHM Chatbot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Chatbot for CMU student onboarding.",
   "permissions": ["storage", "http://127.0.0.1:5000/*"],
   "browser_action": {
