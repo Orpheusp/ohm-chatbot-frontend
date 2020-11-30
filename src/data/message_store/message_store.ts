@@ -12,9 +12,13 @@ import {
   MessageDispatcherPayload,
   MessageStoreActionType,
   messageDispatcher,
+  LocalStorageData,
+  MessageStoreAction,
 } from './message_store_action';
 
 import { fetchChatbotResponse } from './fetch_chatbot_response';
+
+const MIN_TIME_ELAPSED_BEFORE_WELCOME = 20 * 60 * 1000;
 
 export class MessageStore extends ReduceStore<
   MessageStoreState,
@@ -22,6 +26,18 @@ export class MessageStore extends ReduceStore<
 > {
   constructor() {
     super(messageDispatcher);
+
+    chrome.storage.sync.get(
+      ['messageStoreState', 'lastDismissalTimestamp'],
+      (data) => {
+        if (!data || !data.lastDismissalTimestamp || !data.messageStoreState) {
+          // Immediately retrieve welcome message if no local storage content
+          // is found.
+          fetchChatbotResponse('');
+        }
+        MessageStoreAction.restoreMessageStore(data as LocalStorageData);
+      }
+    );
   }
 
   private userMessageCounter = 0;
@@ -68,7 +84,32 @@ export class MessageStore extends ReduceStore<
       fetchChatbotResponse('');
     }
 
+    if (action.type == MessageStoreActionType.BACK_UP_MESSAGE_STORE) {
+      this.backUpToLocalStorage();
+    }
+
+    if (action.type == MessageStoreActionType.RESTORE_MESSAGE_STORE) {
+      const {
+        messageStoreState,
+        lastDismissalTimestamp,
+      } = action.message as LocalStorageData;
+
+      const timeElapsedSinceLastDismissal = Date.now() - lastDismissalTimestamp;
+
+      if (timeElapsedSinceLastDismissal >= MIN_TIME_ELAPSED_BEFORE_WELCOME) {
+        fetchChatbotResponse('');
+      }
+      return { ...messageStoreState };
+    }
+
     return state;
+  }
+
+  private backUpToLocalStorage() {
+    chrome.storage.sync.set({
+      messageStoreState: this.getState(),
+      lastDismissalTimestamp: Date.now(),
+    });
   }
 
   private generateChatCardData(message: string): ChatCardData {
