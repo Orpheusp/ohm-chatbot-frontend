@@ -3,7 +3,11 @@ import React from 'react';
 import { AppHeader } from 'src/components/app_header/app_header';
 import { ChatPaneContainer } from 'src/components/chat_pane/chat_pane_container';
 import { ChatBoxContainer } from 'src/components/chat_box/chat_box_container';
-import { TutorialCardData } from 'src/datatypes';
+import {
+  TutorialCardData,
+  ChromeRuntimeMessageType,
+  ChromeRuntimeMessagePayload,
+} from 'src/datatypes';
 import { TutorialCard } from 'src/components/tutorial_card/tutorial_card';
 
 import './app.scss';
@@ -24,6 +28,28 @@ export class App extends React.Component<unknown, AppState> {
     this.enterTutorial = this.enterTutorial.bind(this);
     this.exitTutorial = this.exitTutorial.bind(this);
     this.continueTutorial = this.continueTutorial.bind(this);
+
+    if (!chrome.runtime) {
+      return;
+    }
+    chrome.runtime.sendMessage(
+      {
+        type: ChromeRuntimeMessageType.GET_APP_STATE_BACKUP,
+      } as ChromeRuntimeMessagePayload,
+      (response: Partial<AppState>) => {
+        this.setState(response);
+      }
+    );
+  }
+
+  componentDidUpdate(_: unknown, prevState: AppState): void {
+    if (!chrome?.storage) {
+      return;
+    }
+    chrome.runtime.sendMessage({
+      type: ChromeRuntimeMessageType.BACK_UP_APP_STATE,
+      message: this.state,
+    } as ChromeRuntimeMessagePayload);
   }
 
   private enterTutorial(tutorial: TutorialCardData) {

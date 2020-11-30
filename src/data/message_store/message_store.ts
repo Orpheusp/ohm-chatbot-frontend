@@ -5,6 +5,8 @@ import {
   CardDataType,
   ChatCardSender,
   ChatCardData,
+  ChromeRuntimeMessagePayload,
+  ChromeRuntimeMessageType,
 } from 'src/datatypes';
 
 import {
@@ -12,9 +14,7 @@ import {
   MessageDispatcherPayload,
   MessageStoreActionType,
   messageDispatcher,
-  BackgroundStorageData,
-  ChromeRuntimeMessagePayload,
-  ChromeRuntimeMessageType,
+  MessageStoreStateBackupData,
   MessageStoreAction,
 } from './message_store_action';
 
@@ -38,7 +38,7 @@ export class MessageStore extends ReduceStore<
       {
         type: ChromeRuntimeMessageType.GET_MESSAGE_STORE_BACKUP,
       } as ChromeRuntimeMessagePayload,
-      (response: Partial<BackgroundStorageData>) => {
+      (response: Partial<MessageStoreStateBackupData>) => {
         if (!response.lastActiveTimestamp || !response.messageStoreState) {
           fetchChatbotResponse('');
           return;
@@ -108,7 +108,7 @@ export class MessageStore extends ReduceStore<
 
     if (action.type == MessageStoreActionType.RESTORE_MESSAGE_STORE) {
       const newState = action.message as MessageStoreState;
-      return { ...newState };
+      return newState;
     }
 
     return state;
@@ -118,7 +118,7 @@ export class MessageStore extends ReduceStore<
     const data = {
       messageStoreState: state,
       lastActiveTimestamp: Date.now(),
-    } as BackgroundStorageData;
+    } as MessageStoreStateBackupData;
     if (!chrome?.storage) {
       return;
     }
