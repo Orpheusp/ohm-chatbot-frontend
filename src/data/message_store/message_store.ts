@@ -12,19 +12,51 @@ import {
   MessageDispatcherPayload,
   MessageStoreActionType,
   messageDispatcher,
+  BackgroundStorageData,
+  ChromeRuntimeMessagePayload,
+  ChromeRuntimeMessageType,
+  MessageStoreAction,
 } from './message_store_action';
 
 import { fetchChatbotResponse } from './fetch_chatbot_response';
+
+const MIN_TIME_ELAPSED_BEFORE_WELCOME = 20 * 60 * 1000;
 
 export class MessageStore extends ReduceStore<
   MessageStoreState,
   MessageDispatcherPayload
 > {
+  private userMessageCounter = 0;
+
   constructor() {
     super(messageDispatcher);
-  }
 
-  private userMessageCounter = 0;
+    if (!chrome.runtime) {
+      return;
+    }
+    chrome.runtime.sendMessage(
+      {
+        type: ChromeRuntimeMessageType.GET_MESSAGE_STORE_BACKUP,
+      } as ChromeRuntimeMessagePayload,
+      (response: Partial<BackgroundStorageData>) => {
+        if (!response.lastActiveTimestamp || !response.messageStoreState) {
+          fetchChatbotResponse('');
+          return;
+        }
+
+        const { messageStoreState, lastActiveTimestamp } = response;
+
+        const timeElapsedSinceLastActive = Date.now() - lastActiveTimestamp;
+
+        if (timeElapsedSinceLastActive >= MIN_TIME_ELAPSED_BEFORE_WELCOME) {
+          fetchChatbotResponse('');
+          return;
+        }
+
+        MessageStoreAction.restoreMessageStore(messageStoreState);
+      }
+    );
+  }
 
   getInitialState(): MessageStoreState {
     return {
@@ -44,31 +76,56 @@ export class MessageStore extends ReduceStore<
       }
       const userChatCard: ChatCardData = this.generateChatCardData(message);
       fetchChatbotResponse(message);
-      return {
+      const newState = {
         messages: [...state.messages, userChatCard],
         userInput: '',
       };
+      this.backUpToBackground(newState);
+      return newState;
     }
 
     if (action.type == MessageStoreActionType.ADD_BOT_MESSAGE) {
-      return {
+      const newState = {
         messages: [...state.messages, ...(action.message as BaseCardData[])],
         userInput: state.userInput,
       };
+      this.backUpToBackground(newState);
+      return newState;
     }
 
     if (action.type == MessageStoreActionType.UPDATE_USER_INPUT) {
-      return {
+      const newState = {
         messages: state.messages,
         userInput: action.message as string,
       };
+      this.backUpToBackground(newState);
+      return newState;
     }
 
     if (action.type == MessageStoreActionType.GET_WELCOME_MESSAGE) {
       fetchChatbotResponse('');
     }
 
+    if (action.type == MessageStoreActionType.RESTORE_MESSAGE_STORE) {
+      const newState = action.message as MessageStoreState;
+      return { ...newState };
+    }
+
     return state;
+  }
+
+  private backUpToBackground(state: MessageStoreState) {
+    const data = {
+      messageStoreState: state,
+      lastActiveTimestamp: Date.now(),
+    } as BackgroundStorageData;
+    if (!chrome?.storage) {
+      return;
+    }
+    chrome.runtime.sendMessage({
+      type: ChromeRuntimeMessageType.BACK_UP_MESSAGE_STORE,
+      message: data,
+    } as ChromeRuntimeMessagePayload);
   }
 
   private generateChatCardData(message: string): ChatCardData {

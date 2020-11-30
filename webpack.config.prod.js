@@ -39,5 +39,5 @@ module.exports = mergeConfig(commonConfig, {
       },
     ],
   },
-  output: { filename: '[name].[hash].bundle.js' },
+  output: { filename: '[name].js' },
 });

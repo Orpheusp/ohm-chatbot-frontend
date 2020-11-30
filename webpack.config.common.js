@@ -15,7 +15,10 @@ const imageExt = ['png', 'svg', 'jpg', 'gif'];
 
 const commonConfig = {
   // Where the application starts and where to start bundling the files.
-  entry: './src/index.tsx',
+  entry: {
+    index: path.join(__dirname, './src/index.tsx'),
+    background: path.join(__dirname, './src/background.ts'),
+  },
   // Which extensions Webpack will resolve, alowing modules being reported
   // without needing to add their extensions.
   resolve: {

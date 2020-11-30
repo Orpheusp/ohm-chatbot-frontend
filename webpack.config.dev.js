@@ -36,9 +36,7 @@ module.exports = mergeConfig(commonConfig, {
       },
     ],
   },
-  output: {
-    filename: 'bundle-dev.js',
-  },
+  output: { filename: '[name].js' },
   devServer: {
     contentBase: './dist',
     port: 3000,
