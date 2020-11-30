@@ -39,7 +39,11 @@ export class MessageStore extends ReduceStore<
         type: ChromeRuntimeMessageType.GET_MESSAGE_STORE_BACKUP,
       } as ChromeRuntimeMessagePayload,
       (response: Partial<MessageStoreStateBackupData>) => {
-        if (!response.lastActiveTimestamp || !response.messageStoreState) {
+        if (
+          !response ||
+          !response.lastActiveTimestamp ||
+          !response.messageStoreState
+        ) {
           fetchChatbotResponse('');
           return;
         }
